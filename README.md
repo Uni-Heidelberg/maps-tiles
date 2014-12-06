@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- gdal
+- [gdal](http://www.gdal.org), also available to install via `brew install gdal`
 
 ## Generating Tiles
 
@@ -12,25 +12,28 @@
 
 2. Generate tiles:
 
-	`python gdal2tiles.py -p mercator [vrt_file]`
+	`$ python gdal2tiles.py -p mercator [vrt_file]`
 	
 ### Coordinates
 
-- INF: `-gcp 510 543 8.658369 49.422397 -gcp 2920 489 8.674420 49.422641 -gcp 3237 2805 8.676662 49.412631 -gcp 1482 2266 8.664986 49.414950`	
+- INF: `-gcp 510 543 8.658369 49.422397 -gcp 2920 489 8.674420 49.422641 -gcp 3237 2805 8.676662 49.412631 -gcp 1482 2266 8.664986 49.414950`
 
 ## Deployment
 
+- Upload to server directory `/static/map-tiles/{campusRegion.identifier}/`
 
 ## Displaying on iOS
 
-	NSString *tileDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"inf"];
-    NSURL *tileDirectoryURL = [NSURL fileURLWithPath:tileDirectory isDirectory:YES];
-    NSString *tileTemplate = [NSString stringWithFormat:@"%@{z}/{x}/{y}.png", tileDirectoryURL];
-    
-    MKTileOverlay *infOverlay = [[MKTileOverlay alloc] initWithURLTemplate:tileTemplate];
-    infOverlay.geometryFlipped = YES;
-    infOverlay.minimumZ = 14;
-    infOverlay.maximumZ = 17;
-    infOverlay.canReplaceMapContent = NO;
-    [self.mapView addOverlay:infOverlay level:MKOverlayLevelAboveLabels];
+- Add a `MKTileOverlay` with appropriate URL template to the map view:
+
+	```
+    MKTileOverlay *overlay = [[MKTileOverlay alloc] initWithURLTemplate:[NSString stringWithFormat:@"%@/{z}/{x}/{y}.png", serverURL]];
+    overlay.geometryFlipped = YES;
+    overlay.minimumZ = 14;
+    overlay.maximumZ = 17;
+    overlay.canReplaceMapContent = NO;
+    [mapView addOverlay:overlay level:MKOverlayLevelAboveLabels];
+	```
+	
+- In `mapView:rendererForOverlay:` return an `MKTileOverlayRenderer` initialized with the tile overlay
 
