@@ -40,9 +40,9 @@
 
 Altstadt
 
-gdal_translate -of VRT -a_srs EPSG:4326 -gcp 214 700 8.693435 49.413864 -gcp 3056 2218 8.706047 49.409340 -gcp 5728 547 8.706047 49.409340 -gcp 3816 209 8.709498 49.415122 resources/alt.png alt_tile
+gdal_translate -of VRT -a_srs EPSG:4326 -gcp 214 700 8.693435 49.413864 -gcp 3056 2218 8.706047 49.409340 -gcp 4859 1717 8.719330 49.409076 -gcp 3816 209 8.709498 49.415122 resources/alt.png alt_tile.vrt
 
-python gdal2tiles.py -p mercator alt_tile -z 15-20
+python gdal2tiles.py -p mercator alt_tile.vrt -z 15-20
 
 Bergheim:
 
