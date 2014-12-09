@@ -40,13 +40,13 @@
 
 Altstadt
 
-gdal_translate -of VRT -a_srs EPSG:4326 -gcp 5331 1875 8.716172 49.410304 -gcp 2915 2136 8.705491 49.409538 -gcp 94 1482 8.693046 49.411565 -gcp 3835 753 8.709578 49.413607 resources/alt.png alt_tile.vrt
+gdal_translate -of VRT -a_srs EPSG:4326 -gcp 5331 1875 8.716172 49.410304 -gcp 2915 2136 8.705491 49.409538 -gcp 94 1482 8.693046 49.411565 -gcp 3835 753 8.709578 49.413607 resources/alt.png alt.vrt
 
-python gdal2tiles.py -p mercator alt_tile.vrt -z 15-20
+python gdal2tiles.py -p mercator alt.vrt -z 15-20
 
 Bergheim:
 
-gdal_translate -of VRT -a_srs EPSG:4326 -gcp 537 1353 8.682831 49.408787 -gcp 3384 2434 8.687846 49.408416 -gcp 6474 1567 8.692385 49.410241 -gcp 3391 710 8.687073 49.410302 resources/berg.png berg_tile
+gdal_translate -of VRT -a_srs EPSG:4326 -gcp 537 1353 8.682831 49.408787 -gcp 3384 2434 8.687846 49.408416 -gcp 6474 1567 8.692385 49.410241 -gcp 3391 710 8.687073 49.410302 resources/berg.png berg.vrt
 
-python gdal2tiles.py -p mercator berg_tyle -z 15-20
+python gdal2tiles.py -p mercator berg.vrt -z 15-20
 
