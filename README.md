@@ -40,7 +40,7 @@
 
 Altstadt
 
-gdal_translate -of VRT -a_srs EPSG:4326 -gcp 214 700 8.693435 49.413864 -gcp 3056 2218 8.706047 49.409340 -gcp 4859 1717 8.719330 49.409076 -gcp 3816 209 8.709498 49.415122 resources/alt.png alt_tile.vrt
+gdal_translate -of VRT -a_srs EPSG:4326 -gcp 5331 1875 8.716172 49.410304 -gcp 2915 2136 8.705491 49.409538 -gcp 94 1482 8.693046 49.411565 -gcp 3835 753 8.709578 49.413607 resources/alt.png alt_tile.vrt
 
 python gdal2tiles.py -p mercator alt_tile.vrt -z 15-20
 
